@@ -1,35 +1,47 @@
-.tb_1 {
-    border-collapse: collapse;
-    border: solid 1px;
+p {
+    font-size: 13px;
+    margin: 0px;
 }
 
-.tb_1 td {
-    border-bottom: solid 1px;
-    font-size: 14px;
+table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    width: 800px;
+}
+
+tr {
+    max-height: 30px;
+    height: 28px;
+}
+
+td {
+    border: solid 1px;
+    padding-left: 5px;
+    padding-right: 5px;
     color: rgb(65, 65, 65);
+    font-size: 13px;
 }
 
 .tb_1 .title{
-    background-color: rgb(156, 194, 229);
+    padding-bottom: 5px;
     border-collapse: collapse;
-    border-top: solid 1px;
     border-bottom: solid 2px;
-    padding: 5px;
     text-align: left;
 }
 
 .tb_1 .main_name{
+    font-size: 13px;
     background-color: rgb(222, 234, 246);
-    border-right: solid 1px;
     padding: 5px 0px 5px;
     font-weight: bold;
     text-align: center;
+    width: 80px;
 }
 
 .tb_1 .sub_name{
+    font-size: 13px;
     background-color: rgb(242, 242, 242);
-    border-left: solid 1px;
-    border-right: solid 1px;
     padding: 5px 0px 5px;
     text-align: center;
+    width: 92px;
 }

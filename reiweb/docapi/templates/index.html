@@ -1,91 +1,161 @@
 <html>
-<head>
+<head> 
     <meta charset="utf-8">
     <link rel="stylesheet" href="static/css/main.css">
     <title>Insert title here</title>
 </head>
+    
+<h2 style="margin: 0px; padding-bottom: 5px;">다세대 주택 전세 계약서</h2>
+<h5 style="margin: 0px; padding-bottom: 20px;">임대인과 임차인 쌍방은 아래 표시 부동산에 관하여 다음 계약내용과 같이 임대차계약을 체결한다.</h5>
 
-<table class="tb_1" style="undefined;table-layout: fixed; width: 1000px">
-<tbody>
-  <tr>
-    <td class="title" colspan="7"><span style="font-weight:bold">1. 부동산의 표시</span><br>
-        임대인과 임차인 쌍방은 아래 표시 부동산에 관하여 다음 계약내용과 같이 임대차계약을 체결한다.</td>
-  </tr>
-  <tr>
-    <td class="main_name">소재지</td>
-    <td colspan="6"></td>
-  </tr>
-  <tr>
-    <td class="main_name">토　지</td>
-    <td class="sub_name">지　목</td>
-    <td colspan="3">{{ data }}</td>
-    <td class="sub_name">면　적</td>
-    <td style="text-align: right; padding-right: 5px">
-        <span style="padding-right: 5px">50</span>
-        <span>㎡</span>
-    </td>
-  </tr>
+<!-- 1. 부동산의 표시-->
+<h5 style="margin: 0px; padding-bottom: 5px;"><b>1. 부동산의 표시</b></h5>
+<table class="tb_1" style="margin-bottom: 20px;  width: 800px">
+    <tbody>
 
-  <!--  -->
-  {% if kindCd == '01' %}
-  <tr>
-    <td class="main_name">건　물</td>
-    <td class="sub_name">구　조</td>
-    <td></td>
-    <td class="sub_name">용　도</td>
-    <td></td>
-    <td class="sub_name">면　적</td>
-    <td style="text-align: right; padding-right: 5px">
-        <span style="padding-right: 5px">50</span>
-        <span>㎡</span>
-    </td>
-  </tr>
-  {% endif %}
-
-  <!-- 0: 매매, 1: 전세, 2: 월세  -->
-  {% if typeCd == '2' or typeCd == '3' %}
-  <tr>
-    <td class="main_name">임대할부분</td>
-    <td colspan="4"></td>
-    <td class="sub_name">면　적</td>
-    <td style="text-align: right; padding-right: 5px">
-        <span style="padding-right: 5px">50</span>
-        <span>㎡</span>
-    </td>
-  </tr>
-  {% endif %}
-
-  <tr>
-    <td class="title" colspan="7"><span style="font-weight:bold">2. 계약 내용</span><br>
-        제 1조(목적) 위 부동산의 임대차에 한하여 임대인과 임차인은 합의에 의하여 임차보증금 및 차임을 아래와 같이 지불하기로 한다.</td>
-  </tr>
-  <tr>
-    <td class="main_name">보증금</td>
-    <td colspan="3">
-        <span style="padding-left: 5px; padding-right: 5px;">금</span>
-        <span style="text-align: right">원</span>
-      </td>
-    <td colspan="3"></td>
-  </tr>
-  <tr>
-    <td class="main_name">계약금</td>
-    <td colspan="3"><p style="padding-left: 5px; padding-right: 5px;">금</p></td>
-    <td colspan="3"></td>
-  </tr>
-  <tr>
-    <td class="main_name">중도금</td>
-    <td colspan="3"><p style="padding-left: 5px; padding-right: 5px;">금</p></td>
-    <td colspan="3"></td>
-  </tr>
-  <tr>
-    <td class="main_name">잔금</td>
-    <td colspan="3"><p style="padding-left: 5px; padding-right: 5px;">금</p></td>
-    <td colspan="3"></td>
-  </tr>
-  <tr>
-    <td class="main_name">차임</td>
-    <td colspan="3"><p style="padding-left: 5px; padding-right: 5px;">금</p></td>
-    <td colspan="3"></td>
-  </tr>
-</tbody>
+      <tr>
+        <td class="main_name">소 재 지</td>
+        <td colspan="6">{{ address }}</td>
+      </tr>
+        
+      <tr>
+        <td class="main_name">토 　 지</td>
+        <td class="sub_name">지 　 목</td>
+        <td colspan="3">{{ land.category }}</td>
+        <td class="sub_name">면 　 적</td>
+        <td style="text-align: right;">{{ land.area }}<span style="margin-left: 8px;">㎡</span></td>
+      </tr>
+        
+      <tr>
+        <td class="main_name">건 　 물</td>
+        <td class="sub_name">구 　 조</td>
+        <td>{{ bld.structure }}</td>
+        <td class="sub_name">용 　 도</td>
+        <td>{{ bld.purpose }}</td>
+        <td class="sub_name">면 　 적</td>
+        <td style="text-align: right;">{{ bld.area }}<span style="margin-left: 8px;">㎡</span></td>
+      </tr>
+        
+      <tr>
+        <td class="main_name">임대할부분</td>
+        <td colspan="4">{{ rent.part }}</td>
+        <td class="sub_name">면 　 적</td>
+        <td style="text-align: right;">{{ rent.area }}<span style="margin-left: 8px;">㎡</span></td>
+      </tr>
+        
+    </tbody>
 </table>
+
+<!-- 2. 계약 내용 -->
+<h5 style="margin: 0px; padding-bottom: 5px;"><b>2. 계약 내용</b></h5>
+
+<table class="tb_1">
+    <tbody>
+      <tr>
+        <td class="main_name">보 증 금</td>
+        <td colspan="3"><span style="">금</span><span style="padding-left: 5px;"></span>{{ pay.sum }}</td>
+        <td colspan="3"></td>
+      </tr>
+
+      <tr>
+        <td class="main_name">계 약 금</td>
+        <td colspan="3"><span style="">금</span><span style="padding-left: 5px;"></span>{{ pay.down }}</td>
+        <td colspan="3">은 계약시에 지불하고 영수함 ※ 영수자</td>
+      </tr>
+
+      {% if day.middle %}
+      <tr>
+        <td class="main_name">중 도 금</td>
+        <td colspan="3"><span style="">금</span><span style="padding-left: 5px;"></span>{{ pay.middle }}</td>
+        <td colspan="3">은 {{ day.middle }}에 지불한다.</td>
+      </tr>
+      {% endif %}
+
+      <tr>
+        <td class="main_name">잔 　 금</td>
+        <td colspan="3"><span style="">금</span><span style="padding-left: 5px;"></span>{{ pay.balance }}</td>
+        <td colspan="3">은 {{ day.balance }}에 지불한다.</td>
+      </tr>
+
+      {% if day.middle %}
+      <tr>
+        <td class="main_name">차 　 임</td>
+        <td colspan="3"><span style="">금</span><span style="padding-left: 5px;"></span>{{ pay.rent }}</td>
+        <td colspan="3">은 매월 {{ day.rent }} ({{ day.rent_pp }})</td>
+      </tr>
+      {% endif %}
+
+    </tbody>
+</table>
+
+<!-- 계약 조항 테이블 -->
+<table class="tb_1">
+    <tbody>
+      {% for row in clause %}
+      <tr>
+        <td class="sub_name" style="width: 60px;"><b>{{ row.num }}</b></td>
+        <td colspan="3"><b>{{ row.title }} </b>{{ row.content }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+<!-- 3. 특약사항 -->
+<div style="width: 778px; border: 1px solid; padding: 10px; margin-bottom: 10px;">
+    <p style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid; text-align: center;"><b>특약 사항</b></p>
+    {{ agrs|safe }}
+</div>
+
+<table class="tb_1">
+    <tbody>
+        
+      <!-- 계약자 -->
+      {% for c in contractor %}
+      <tr>
+        <td class="main_name" rowspan='2'>{{ c.kind }}</td>
+        <td class="sub_name" style="font-size: 12px;">주　소</td>
+        <td colspan="5">{{ c.address }}</td>
+        <td rowspan='2' style="text-align: center; width: 90px;">(인)</td>
+      </tr>
+        
+      <tr>
+        <td class="sub_name" style="font-size: 12px;">주민등록번호</td>
+        <td>{{ c.rr_num }}</td>
+        <td class="sub_name" style="font-size: 12px;">연 락 처</td>
+        <td>{{ c.mobile }}</td>
+        <td class="sub_name" style="font-size: 12px;">성 　 명</td>
+        <td style="padding: 0px; text-align: center;">{{ c.name }}</td>
+      </tr>
+      {% endfor %}
+    
+      <!-- 중개사 -->
+
+      <!-- 계약자 -->
+      {% for a in agent %}
+      <tr>
+        <td class="main_name" rowspan='3'>{{ a.kind }}</td>
+        <td class="sub_name">사무소소재지</td>
+        <td colspan="6">{{ a.address }}</td>
+      </tr>
+
+      <tr>
+        <td class="sub_name">사무소 명칭</td>
+        <td colspan="3">{{ a.bs_nm }}</td>
+        <td class="sub_name">대표자명</td>
+        <td class="sub_name" style="font-size: 11px; width: 75px;">서명 및 날인</td>
+        <td style="text-align: center; width: 90px;">(인)</td>
+      </tr>
+
+      <tr>
+        <td class="sub_name">전화번호</td>
+        <td>{{ a.gen }}</td>
+        <td class="sub_name">등록번호</td>
+        <td>{{ a.rr_num }}</td>
+        <td class="sub_name" style="padding-left: 2px; padding-right: 2px;">소속공인중개사</td>
+        <td class="sub_name" style="font-size: 11px; width: 75px;">서명 및 날인</td>
+        <td style="text-align: center; width: 90px;">(인)</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+    
