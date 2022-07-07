@@ -26,6 +26,38 @@ def html_to_pdf(template_src, context_dict=None):
     return None
 
 
+def link_callback(uri, rel):
+    """
+    Convert HTML URIs to absolute system paths so xhtml2pdf can access those
+    resources
+    """
+    result = finders.find(uri)
+    if result:
+        if not isinstance(result, (list, tuple)):
+            result = [result]
+        result = list(os.path.realpath(path) for path in result)
+        path = result[0]
+    else:
+        sUrl = settings.STATIC_URL  # Typically /static/
+        sRoot = settings.STATIC_ROOT  # Typically /home/userX/project_static/
+        mUrl = settings.MEDIA_URL  # Typically /media/
+        mRoot = settings.MEDIA_ROOT  # Typically /home/userX/project_static/media/
+
+        if uri.startswith(mUrl):
+            path = os.path.join(mRoot, uri.replace(mUrl, ""))
+        elif uri.startswith(sUrl):
+            path = os.path.join(sRoot, uri.replace(sUrl, ""))
+        else:
+            return uri
+
+    # make sure that file exists
+    if not os.path.isfile(path):
+        raise Exception(
+            'media URI must start with %s or %s' % (sUrl, mUrl)
+        )
+    return path
+
+
 def main(request):
     template = 'index.html'
     if request.method == 'GET':
@@ -80,7 +112,21 @@ p, li { white-space: pre-wrap; }
         context = {'address': address, 'land': land, 'bld': bld, 'rent': rent, 'pay': pay, 'day': day, 'clause': clause,
                    'agrs': agrs, 'contractor': contractor, 'agent': agent}
 
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+        # find the template and render it.
+        # template = get_template(template)
+        # html = template.render(context)
+
+        # create a pdf
+        # pisa_status = pisa.CreatePDF(
+        #     html, dest=response, link_callback=link_callback)
+        # # if error then show some funny view
+        # if pisa_status.err:
+        #     return HttpResponse('We had some errors <pre>' + html + '</pre>')
+        # return response
+
         pdf = html_to_pdf(template, context)
-        return render(request, template, context)
-        # return HttpResponse(pdf, content_type='application/pdf')
+        # return render(request, template, context)
+        return HttpResponse(pdf, content_type='application/pdf')
     return render(request, 'index.html')
