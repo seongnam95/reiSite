@@ -89,19 +89,19 @@
 </table>
 
 <!-- 계약 조항 테이블 -->
-<table class="tb_2">
+<table class="tb_1">
     <tbody>
       {% for row in clause %}
       <tr>
-        <td class="sub_name" style="width: 60px;"><b>{{ row.num }}</b></td>
-        <td style="font-size: 12px;"><b>{{ row.title }} </b>{{ row.content }}</td>
+        <td class="sub_name" style="width: 70px;"><b>{{ row.num }}</b></td>
+        <td style="font-size: 13px; padding: 5px;"><b>{{ row.title }} </b>{{ row.content }}</td>
       </tr>
       {% endfor %}
     </tbody>
 </table>
 
 <!-- 3. 특약사항 -->
-<div style="width: 778px; margin-bottom: 10px;">
+<div>
     <p style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid; text-align: center;"><b>특약 사항</b></p>
     {{ agrs|safe }}
 </div>
@@ -159,29 +159,3 @@
     </tbody>
 </table>
 </div>
-
-<div id="editor"></div>
-
-<button id="cmd">Generate PDF</button>
-
-<script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-<script type = "text/javascript" src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script type = "text/javascript" src = "http://code.jquery.com/jquery-latest.min.js"></script>
-
-<script type="text/javascript">
-var doc = new jsPDF();
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
-
-    $('#cmd').click(function () {
-        doc.fromHTML($('#content').html(), 15, 15, {
-            'width': 170,
-                'elementHandlers': specialElementHandlers
-        });
-        doc.save('sample-file.pdf');
-    });
-
-</script>

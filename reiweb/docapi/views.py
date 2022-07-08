@@ -10,6 +10,7 @@ from django.conf import settings
 
 from xhtml2pdf import pisa
 from django.views.generic import View
+import pdfkit
 
 
 # defining the function to convert an HTML file to a PDF file
@@ -126,7 +127,10 @@ p, li { white-space: pre-wrap; }
         #     return HttpResponse('We had some errors <pre>' + html + '</pre>')
         # return response
 
-        pdf = html_to_pdf(template, context)
-        # return render(request, template, context)
-        return HttpResponse(pdf, content_type='application/pdf')
+        # config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
+        # pdfkit.from_url('http://google.com', 'out.pdf', configuration=config)
+        #
+        # pdf = html_to_pdf(template, context)
+        return render(request, template, context)
+        # return HttpResponse(pdf, content_type='application/pdf')
     return render(request, 'index.html')
