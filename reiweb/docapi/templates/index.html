@@ -1,14 +1,69 @@
 
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <style>
+    {{ url_for('static', filename='main.css', _external=True) }}
+  </style>
+  <style>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="static/css/main.css">
-    <title>Insert title here</title>
+p { font-size: 16px; margin: 0px; }
+
+div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 890px;
+    margin-bottom: 10px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    width: 900px;
+}
+
+tr {
+    max-height: 32px;
+    height: 32px;
+}
+
+td {
+    border: solid 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: rgb(65, 65, 65);
+    font-size: 15px;
+}
+
+.tb_1 .main_name{
+    font-size: 15px;
+    background-color: rgb(222, 234, 246);
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+}
+
+.tb_1 .sub_name{
+    font-size: 13px;
+    background-color: rgb(242, 242, 242);
+    text-align: center;
+    width: 95px;
+}
+
+.tb_1 .main_row {
+    padding-top: 3px;
+    padding-left: 5px;
+}
+
+  </style>
 </head>
 
-
+<H1 style="text-align: center; padding: 20px;">부동산 전세 임대차계약서</H1>
+<H3 style="text-align: center;">임대인과 임차인 쌍방은 아래 표시 부동산에 관하여 다음 계약내용과 같이 임대차계약을 체결한다.</H3>
 
 <div id="content">
 <!-- 1. 부동산의 표시-->
