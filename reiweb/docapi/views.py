@@ -33,7 +33,6 @@ def main(request):
         config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
         pdf_file = pdfkit.from_string(html, configuration=config, options=pdf_options)
         sitename_base64 = base64.b64encode(pdf_file).decode('utf8')
-
         return JsonResponse({'pdf': sitename_base64})
 
     return render(request, 'index.html')
