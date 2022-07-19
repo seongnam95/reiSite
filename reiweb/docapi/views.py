@@ -1,5 +1,4 @@
 
-import os
 import base64
 import json
 import pdfkit
@@ -37,23 +36,3 @@ def main(request):
 
     return render(request, 'index.html')
 
-
-def wish_lists_pdf(user):
-    pdf_heading = "Thank you!"
-    pdf_subheading = "Please find the Wish Lists you signed up to sponsor listed below."
-
-    pdf_context = {
-        'heading': pdf_heading,
-        'subheading': pdf_subheading,
-        'user': user,
-    }
-    css = os.path.join(basedir, 'static/main.css')
-    pdf_content = render_template(
-        'partials/email_lists_pdf.html', **pdf_context)
-
-    path_wkhtmltopdf = app.config['WKHTMLTOPDF_EXE']
-    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-
-    pdf_file = pdfkit.from_string(pdf_content, False, configuration=config, css=css)
-
-    return pdf_file

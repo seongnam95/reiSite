@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load sass_tags %}
+    <head>
+        <meta charset="UTF-8">
+        <link href="{% sass_src 'scss/contract.scss' %}" rel="stylesheet" type="text/css" />
+        <link href="{% sass_src 'scss/select_item.scss' %}" rel="stylesheet" type="text/css" />
+        <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+        <script src="/static/js/ui_effct.js"></script>
+    </head>
+
+    <body>
+        <div class="header">
+            asd
+        </div>
+        <div class="content">
+            <h3>매물 정보</h3>
+
+            <div class="property-type">
+                <div class="form address-box">
+                    <header><h5>계약서 종류</h5></header>
+                    <div class="selectbox">
+                        <label for="ex_select">국적선택</label>
+                        <select id="ex_select">
+                            <option selected>국적선택</option>
+                            <option>한국</option>
+                            <option>일본</option>
+                            <option>중국</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-info">
+                <div class="form address-box">
+                    <header>제목</header>
+                    <section>내용</section>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
