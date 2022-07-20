@@ -1,17 +1,9 @@
-.where {
-  display: block;
-  margin: 25px 15px;
-  font-size: 11px;
-  color: #000;
-  text-decoration: none;
-  font-family: verdana;
-  font-style: italic;
-}
 
 .selectbox {
   position: relative;
+  font-size: 14px;
   width: 200px;
-  border: 1px solid #999;
+  border: 1px solid lightgray;
   z-index: 1;
 }
 
@@ -30,11 +22,12 @@
 
 .selectbox label {
   position: absolute;
-  top: 1px;
+  top: 3px;
   left: 5px;
-  padding: .8em .5em;
+  padding: .5em .5em;
   color: #999;
   z-index: -1;
+  color: rgb(65,65,65);
 }
 
 .selectbox select {

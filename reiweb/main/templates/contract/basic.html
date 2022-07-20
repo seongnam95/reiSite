@@ -5,37 +5,137 @@
         <meta charset="UTF-8">
         <link href="{% sass_src 'scss/contract.scss' %}" rel="stylesheet" type="text/css" />
         <link href="{% sass_src 'scss/select_item.scss' %}" rel="stylesheet" type="text/css" />
+        <link href="{% sass_src 'scss/radio_item.scss' %}" rel="stylesheet" type="text/css" />
+        <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
         <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-        <script src="/static/js/ui_effct.js"></script>
+        <script src="/static/js/ui_effect.js" type="text/javascript"></script>
     </head>
 
     <body>
-        <div class="header">
-            asd
-        </div>
+        <div class="header"></div>
         <div class="content">
-            <h3>매물 정보</h3>
+            <h3>계약서 선택</h3>
 
-            <div class="property-type">
-                <div class="form address-box">
-                    <header><h5>계약서 종류</h5></header>
-                    <div class="selectbox">
-                        <label for="ex_select">국적선택</label>
-                        <select id="ex_select">
-                            <option selected>국적선택</option>
-                            <option>한국</option>
-                            <option>일본</option>
-                            <option>중국</option>
-                        </select>
+            <div class="section">
+                <div class="wrap">
+                    <div class="inner_head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                        <header><h5>계약 종류</h5></header>
+                    </div>
+                    <div class="inner_content">
+                        <p class="item_name">계약서</p>
+                        <div class="selectbox">
+                            <label for="ex_select">계약서 선택</label>
+                            <select id="ex_select">
+                                <option selected>계약서 선택</option>
+                                {% for k in prop.kind %}
+                                <option>{{ k }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inner_content">
+                        <p class="item_name">매물 종류</p>
+                        <div class="selectbox">
+                            <label for="ex_select">매물 선택</label>
+                            <select id="ex_select2">
+                                <option selected>매물 선택</option>
+                                {% for t in prop.type %}
+                                <option>{{ t }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inner_content">
+                        <p class="item_name">거래 종류</p>
+                        <div class='radio-group'>
+                            <label class='radio-label'>
+                                <input name='snacks' type='radio' id='pizza'>
+                                <span class='inner-label'>매매</span>
+                            </label>
+                            <label class='radio-label'>
+                                <input name='snacks' type='radio' id='nachos'>
+                                <span class='inner-label'>전세</span>
+                            </label>
+                            <label class='radio-label'>
+                                <input name='snacks' type='radio' id='burgers'>
+                                <span class='inner-label'>월세</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="room-info">
-                <div class="form address-box">
-                    <header>제목</header>
-                    <section>내용</section>
+            <h3>매물 정보</h3>
+
+            <div class="section">
+                <!--소재지-->
+                <div class="wrap">
+                    <div class="inner_head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                        <header><h5>소재지</h5></header>
+                    </div>
+                    <div class="first_part">
+                        <div class="inner_content">
+                            <p class="item_name">주소</p>
+                            <input type="text" class="text_edit" style="width: 400px;">
+                        </div>
+                    </div>
+                    <div class="second_part">
+                        <div class="inner_content">
+                            <p class="item_name">동명칭</p>
+                            <input type="text" class="text_edit" style="width: 100px;">
+                        </div>
+                        <div class="inner_content">
+                            <p class="item_name">호명칭</p>
+                            <input type="text" class="text_edit" style="width: 100px;">
+                        </div>
+                    </div>
                 </div>
+
+                <!--임대할 부분-->
+                <div class="wrap">
+                    <div class="inner_head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                        <header><h5>임대할 부분</h5></header>
+                    </div>
+                    <div class="first_part">
+                        <div class="inner_content">
+                            <p class="item_name">동/호명칭</p>
+                            <input type="text" class="text_edit" style="width: 150px;">
+                            <p class="item_name">임대 면적</p>
+                            <input type="text" class="text_edit" style="width: 100px;">
+                            <p class="item_name" style="padding-left: 10px;">㎡</p>
+                        </div>
+                    </div>
+                    <div class="second_part">
+                        <div class="inner_content">
+                            <p class="item_name">임대 면적</p>
+                            <input type="text" class="text_edit" style="width: 100px;">
+                            <p class="item_name" style="padding-left: 10px;">㎡</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--대지권 비율-->
+                <div class="wrap">
+                    <div class="inner_head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                        <header><h5>대지권 비율</h5></header>
+                   </div>
+                    <div class="first_part">
+                        <div class="inner_content">
+                            <input type="text" class="text_edit" style="width: 150px;">
+                            <p class="hint">분의</p>
+                            <input type="text" class="text_edit" style="width: 150px;">
+                        </div>
+                    </div>
+                    <div class="second_part">
+                        <div class="inner_content">
+                            <p class="item_name">임대 면적</p>
+                            <input type="text" class="text_edit" style="width: 100px;">
+                            <p class="item_name" style="padding-left: 10px;">㎡</p>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </body>

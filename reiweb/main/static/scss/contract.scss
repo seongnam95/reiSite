@@ -1,47 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Poppins:ital,wght@1,300&display=swap');
+
+$lightGray: #FAFAFA;
+$borderColor: #DADCE0;
+$fontMain: #414141;
+$fontSub: #787878;
+$fontHint: #8C8C8C;
+
 * {
     padding: 0;
     margin: 0;
+    border: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
-    background-color: aliceblue;
+    font-family: 'NanumSquareRegular';
+    background-color: #fff;
 }
 
-select {
-    height: 30px;
+h3 {
+    padding: 10px;
+    color: $fontMain;
 }
 
-.property-type {
-    border: 1px solid lightgray;
-}
-
-.form {
-    display: flex;
-}
+// 제목
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.1rem 8rem;
-    background: linear-gradient(180deg, #6fb4fd 0%, #5caafc 100%);
+    background: linear-gradient(180deg, #fff 0%, #eee 100%);
+}
+
+// 내용
+.section {
+    border: 1px solid $borderColor;
+    border-radius: 8px;
+    box-shadow: 3px 3px 8px rgba(#4B4848, 0.1);
+    margin-bottom: 15px;
+}
+
+.wrap {
+    display: flex;
 }
 
 .content {
-    width: 1000px;
+    width: 1300px;
     margin: auto;
     margin-top: 70px;
     padding: 5px;
 }
 
-.edit {
-    height: 30px;
-    padding-left: 5px;
-    &.nor {
-        width: 200px;
+.inner_head {
+    font-family: 'NanumSquareLight';
+    min-width: 160px;
+    font-size: 18px;
+    padding: 1.2em;
+    background-color: $lightGray;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
 
+.inner_content {
+    padding: 1.2em;
+    display: flex;
+	align-items: center;
+	min-width: 250px;
+    font-size: 17px;
+    p {
+        font-size: 14px;
+        color: $fontHint;
+        margin-right: 20px;
+    }
+    .item_name {
+        min-width: 70px;
+        text-align: center;
     }
 }
 
+.text_edit {
+    border: 1px solid $borderColor;
+    height: 35px;
+    padding-left: 10px;
+}
+
+.first_part {
+    display: block;
+    width: 500px;
+}
+
+.second_part {
+    display: flex;
+}
+
+.hint {
+    color: $borderColor;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
