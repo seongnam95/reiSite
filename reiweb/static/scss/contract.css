@@ -7,26 +7,24 @@ h3 { padding: 10px; color: #414141; }
 
 .header { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 8rem; background: linear-gradient(180deg, #fff 0%, #eee 100%); }
 
-.section { border: 1px solid #DADCE0; border-radius: 8px; box-shadow: 3px 3px 8px rgba(75, 72, 72, 0.1); margin-bottom: 15px; }
+.wrap { width: 1200px; margin: auto; margin-top: 70px; padding: 5px; }
 
-.wrap { display: flex; }
+.container { border: 1px solid #DADCE0; border-radius: 8px; box-shadow: 3px 3px 8px rgba(75, 72, 72, 0.1); margin-bottom: 15px; }
 
-.content { width: 1300px; margin: auto; margin-top: 70px; padding: 5px; }
+.section { width: 100%; display: flex; border-bottom: 1px solid #F0F0F0; }
 
-.inner_head { font-family: 'NanumSquareLight'; min-width: 160px; font-size: 18px; padding: 1.2em; background-color: #FAFAFA; display: flex; justify-content: center; flex-flow: column; }
+.content { width: 100%; display: flex; }
 
-.inner_content { padding: 1.2em; display: flex; align-items: center; min-width: 250px; font-size: 17px; }
+.head { font-family: 'NanumSquareLight'; min-width: 160px; font-size: 18px; padding: 1.2em; background-color: #FAFAFA; display: flex; justify-content: center; flex-flow: column; }
 
-.inner_content p { font-size: 14px; color: #8C8C8C; margin-right: 20px; }
+.inner { width: 100%; display: flex; padding: 0.8em; }
 
-.inner_content .item_name { min-width: 70px; text-align: center; }
+.field { width: 100%; padding: 0.4em; display: flex; align-items: center; min-width: 250px; font-size: 17px; }
 
-.text_edit { border: 1px solid #DADCE0; height: 35px; padding-left: 10px; }
+.field .item_name { color: #8C8C8C; font-size: 14px; min-width: 80px; margin-left: 10px; margin-right: 20px; }
 
-.first_part { display: block; width: 500px; }
+.field .hint { min-width: 40px; margin-left: 5px; margin-right: 5px; font-size: 13px; }
 
-.second_part { display: flex; }
-
-.hint { color: #DADCE0; font-size: 14px; padding-left: 5px; padding-right: 5px; }
+.field .text_edit { width: 100%; border: 1px solid #DADCE0; height: 35px; }
 
 /*# sourceMappingURL=contract.css.map */

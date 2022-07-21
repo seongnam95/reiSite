@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Poppins:ital,wght@1,300&display=swap');
 
-$lightGray: #FAFAFA;
+$tableHeadColor: #FAFAFA;
 $borderColor: #DADCE0;
 $fontMain: #414141;
 $fontSub: #787878;
@@ -34,70 +34,74 @@ h3 {
 }
 
 // 내용
-.section {
+
+.wrap {
+    width: 1200px;
+    margin: auto;
+    margin-top: 70px;
+    padding: 5px;
+}
+
+.container {
     border: 1px solid $borderColor;
     border-radius: 8px;
     box-shadow: 3px 3px 8px rgba(#4B4848, 0.1);
     margin-bottom: 15px;
 }
 
-.wrap {
+.section {
+    width: 100%;
     display: flex;
+    border-bottom: 1px solid #F0F0F0;
 }
 
 .content {
-    width: 1300px;
-    margin: auto;
-    margin-top: 70px;
-    padding: 5px;
+    width: 100%;
+    display: flex;
 }
 
-.inner_head {
+.head {
     font-family: 'NanumSquareLight';
     min-width: 160px;
     font-size: 18px;
     padding: 1.2em;
-    background-color: $lightGray;
+    background-color: $tableHeadColor;
     display: flex;
     justify-content: center;
     flex-flow: column;
 }
 
-.inner_content {
-    padding: 1.2em;
+.inner {
+    width: 100%;
+    display: flex;
+    padding: 0.8em;
+}
+
+.field {
+    width: 100%;
+    padding: 0.4em;
     display: flex;
 	align-items: center;
 	min-width: 250px;
     font-size: 17px;
-    p {
-        font-size: 14px;
+    .item_name {
         color: $fontHint;
+        font-size: 14px;
+        min-width: 80px;
+        margin-left: 10px;
         margin-right: 20px;
     }
-    .item_name {
-        min-width: 70px;
-        text-align: center;
+    .hint {
+        min-width: 40px;
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 13px;
+    }
+    .text_edit {
+        width: 100%;
+        border: 1px solid $borderColor;
+        height: 35px;
     }
 }
 
-.text_edit {
-    border: 1px solid $borderColor;
-    height: 35px;
-    padding-left: 10px;
-}
 
-.first_part {
-    display: block;
-    width: 500px;
-}
-
-.second_part {
-    display: flex;
-}
-
-.hint {
-    color: $borderColor;
-    font-size: 14px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
