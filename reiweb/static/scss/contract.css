@@ -9,7 +9,7 @@ h3 { padding: 10px; color: var(--font-main); }
 
 .header { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 8rem; background: linear-gradient(180deg, #fff 0%, #eee 100%); }
 
-.wrap { width: 1200px; margin: auto; margin-top: 70px; padding: 5px; }
+.wrap { width: 1350px; margin: auto; margin-top: 70px; padding: 5px; }
 
 .container { border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 3px 3px 8px rgba(75, 72, 72, 0.1); margin-bottom: 15px; }
 

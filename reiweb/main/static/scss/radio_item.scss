@@ -39,7 +39,8 @@ $border-bottom-transition: border-bottom 0.5s ease;
         position: relative;
         display: inline-block;
         padding-left: 40px;
-        font-size: 15px;
+        font-size: 14px;
+        min-width: 70px;
 
         &:before {
             content: '';
