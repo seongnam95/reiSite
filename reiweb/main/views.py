@@ -9,6 +9,7 @@ def main(request):
 
 
 def contract(request):
+    print('a')
     template = 'contract/basic.html'
     context = temp_data()
     return render(request, template, context)

@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&family=Poppins:ital,wght@1,300&display=swap');
 
-$tableHeadColor: #FAFAFA;
-$borderColor: #DADCE0;
-$fontMain: #414141;
-$fontSub: #787878;
-$fontHint: #8C8C8C;
+:root {
+    --main-color: #3875CE;
+    --table-head-color: #FAFAFA;
+    --border-color: #DADCE0;
+    --font-main: #414141;
+    --font-sun: #787878;
+    --font-hint: #8C8C8C;
+}
 
 * {
     padding: 0;
@@ -20,7 +23,7 @@ body {
 
 h3 {
     padding: 10px;
-    color: $fontMain;
+    color: var(--font-main);
 }
 
 // 제목
@@ -43,7 +46,7 @@ h3 {
 }
 
 .container {
-    border: 1px solid $borderColor;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 3px 3px 8px rgba(#4B4848, 0.1);
     margin-bottom: 15px;
@@ -65,7 +68,7 @@ h3 {
     min-width: 160px;
     font-size: 18px;
     padding: 1.2em;
-    background-color: $tableHeadColor;
+    background-color: var(--table-head-color);
     display: flex;
     justify-content: center;
     flex-flow: column;
@@ -85,23 +88,32 @@ h3 {
 	min-width: 250px;
     font-size: 17px;
     .item_name {
-        color: $fontHint;
+        color: var(--font-hint);
         font-size: 14px;
         min-width: 80px;
         margin-left: 10px;
         margin-right: 20px;
     }
     .hint {
-        min-width: 40px;
-        margin-left: 5px;
-        margin-right: 5px;
+        color: var(--font-hint);
+        margin-left: 7px;
+        margin-right: 7px;
         font-size: 13px;
-    }
-    .text_edit {
-        width: 100%;
-        border: 1px solid $borderColor;
-        height: 35px;
     }
 }
 
+.text_edit {
+    width: 100%;
+    height: 35px;
+    border: 1px solid var(--border-color);
+    padding-left: 10px;
+    &:hover{
+        transition: border .3s ease
+    }
+    &:focus{
+        outline: 0;
+        border: 1px solid var(--main-color);
+        transition: .5s ease
+    }
+}
 

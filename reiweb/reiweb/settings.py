@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'docapi.apps.DocapiConfig',
     'sass_processor',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

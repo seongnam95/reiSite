@@ -9,7 +9,7 @@
         <link href="{% sass_src 'scss/item_check_box.scss' %}" rel="stylesheet" type="text/css" />
         <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
         <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-        <script src="/static/js/ui_effect.js" type="text/javascript"></script>
+<!--        <script src="/static/js/contract/selectEvent.js" type="text/javascript"></script>-->
     </head>
 
     <body>
@@ -26,11 +26,11 @@
                             <div class="field">
                                 <p class="item_name">계약서</p>
                                 <div class="selectbox">
-                                    <label for="ex_select">계약서 선택</label>
-                                    <select id="ex_select">
+                                    <label for="opt_type">계약서 선택</label>
+                                    <select id="opt_type">
                                         <option selected>계약서 선택</option>
-                                        {% for k in prop.kind %}
-                                        <option>{{ k }}</option>
+                                        {% for t in prop.type %}
+                                            <option>{{ t }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -39,11 +39,11 @@
                             <div class="field">
                                 <p class="item_name">매물 종류</p>
                                 <div class="selectbox">
-                                    <label for="ex_select">매물 선택</label>
-                                    <select id="ex_select2">
+                                    <label for="opt_kind">매물 선택</label>
+                                    <select id="opt_kind">
                                         <option selected>매물 선택</option>
-                                        {% for t in prop.type %}
-                                        <option>{{ t }}</option>
+                                        {% for k in prop.kind %}
+                                            <option>{{ k }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -126,19 +126,91 @@
                        </div>
                         <div class="inner">
                             <div class="field">
-                                <input type="text" class="text_edit" style="width: 150px;">
+                                <input type="text" class="text_edit">
                                 <p class="hint">분의</p>
-                                <input type="text" class="text_edit" style="width: 150px;">
+                                <input type="text" class="text_edit">
                             </div>
                             <div class="field">
                                 <p class="item_name">대지권 종류</p>
-                                <div class="selectbox">
-                                    <label for="ex_select">매물 선택</label>
-                                    <select id="ex_select3">
-                                        <option selected>매물 선택</option>
+                                <div class="selectbox" style="width: 100%">
+                                    <label for="opt_land_type">종류 선택</label>
+                                    <select id="opt_land_type">
+                                        <option selected>종류 선택</option>
                                         {% for t in prop.type %}
                                         <option>{{ t }}</option>
                                         {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!--토지-->
+                <div class="content">
+                    <section class="section">
+                        <div class="head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                            <header><h5>토 지</h5></header>
+                       </div>
+                        <div class="inner">
+                            <div class="field">
+                                <div class="selectbox" style="width: 70%; margin-right: 10px;">
+                                    <label for="opt_land">지목</label>
+                                    <select id="opt_land">
+                                        <option selected>지목</option>
+                                        <option>대표지목</option>
+                                    </select>
+                                </div>
+                                <div class="selectbox" style="width: 100%">
+                                    <label for="opt_land_detail">토지 지목</label>
+                                    <select id="opt_land_detail">
+                                        <option selected>매물 선택</option>
+                                        {% for l in prop.land %}
+                                        <option>{{ l }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <p class="item_name">대지 면적</p>
+                                <input type="text" class="text_edit">
+                                <p class="hint">㎡</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!--건물-->
+                <div class="content">
+                    <section class="section">
+                        <div class="head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                            <header><h5>건 물</h5></header>
+                       </div>
+                        <div class="inner" style="display: block">
+                            <div style="display: flex">
+                                <div class="field">
+                                    <p class="item_name">구조</p>
+                                    <div class="selectbox" style="width: 100%;">
+                                        <label for="opt_structure">선택</label>
+                                        <select id="opt_structure">
+                                            <option selected>선택</option>
+                                            <option>대표지목</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <p class="item_name">연면적</p>
+                                    <input type="text" class="text_edit" style="width: 100%;">
+                                    <p class="hint">㎡</p>
+                                </div>
+                            </div>
+                            <div class="field" style="width: 306px;">
+                                <p class="item_name">용도</p>
+                                <div class="selectbox">
+                                    <label for="opt_purposes">용도</label>
+                                    <select id="opt_purposes">
+                                        <option selected>용도</option>
+                                        <option>대표지목</option>
                                     </select>
                                 </div>
                             </div>
