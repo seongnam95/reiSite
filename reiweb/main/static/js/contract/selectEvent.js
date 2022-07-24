@@ -1,15 +1,18 @@
 $(document).ready(function(){
-      $("#txt_deposit").blur(function(){
-      });
+    // 가격 정보 입력
+    $("input[name=price]").on("change keyup paste", function() {
+        inputNumberFormat(this);
+        console.log($(this).parent("div").parent("div"));
 
-    // 금액 입력 시
-    $("#txt_deposit").on("change keyup paste", function() {
-        var str = $("#txt_deposit").val();
-        console.log(str);
-        str = str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,')
-        $("#txt_deposit").val(str);
-        var convVal = viewKorean(str);
-        $("#hint_deposit").text(convVal);
+        // 한글 금액표기
+        priceStr = this.value;
+        if(priceStr) {
+            priceKr = String(parseInt(uncomma(priceStr)) * 10000);
+            convVal = numberToKorean(priceKr);
+
+            parent_div = $(this).parent("div").parent("div");
+            parent_div.find(".price_kor").text(convVal);
+        };
     });
 
     // 셀렉트 Box
@@ -41,31 +44,42 @@ $(document).ready(function(){
     });
 });
 
+function comma(str) {str = String(str); return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');}
+function uncomma(str) { str = String(str); return str.replace(/[^\d]+/g, ''); }
+function inputNumberFormat(obj) { obj.value = comma(uncomma(obj.value)); }
+function inputOnlyNumberFormat(obj) { obj.value = onlynumber(uncomma(obj.value)); }
+function onlynumber(str) { str = String(str); return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1'); }
+
 // 금액표기 한글 변환
-function viewKorean(num) {
-    var hanA = new Array("","일","이","삼","사","오","육","칠","팔","구","십");
-    var danA = new Array("","십","백","천","","십","백","천","","십","백","천","","십","백","천");
-    var result = "";
-    for(i=0; i<num.length; i++) {
-        str = "";
-        han = hanA[num.charAt(num.length-(i+1))];
-        if(han != "") str += han+danA[i];
-        if(i == 4) str += "만";
-        if(i == 8) str += "억";
-        if(i == 12) str += "조";
-        result = str + result;
+  function numberToKorean(number) {
+    var inputNumber = number < 0 ? false : number;
+    var unitWords = ["", "만", "억 ", "조 ", "경 "];
+    var splitUnit = 10000;
+    var splitCount = unitWords.length;
+    var resultArray = [];
+    var resultString = "";
+
+    for (var i = 0; i < splitCount; i++) {
+      var unitResult =
+        (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+      unitResult = Math.floor(unitResult);
+      if (unitResult > 0) {
+        resultArray[i] = unitResult;
+      }
     }
-    if(num != 0)
-        result = result + "원";
-    return result ;
-}
+    for (var i = 0; i < resultArray.length; i++) {
+      if (!resultArray[i]) continue;
+      resultString = String(resultArray[i]) + unitWords[i] + resultString;
+    }
+    return resultString.trimEnd() + '원';
+  }
 
 function commas(t) {
 	// 콤마 빼고
 	var x = t.value;
 	x = x.replace(/,/gi, '');
 
-        // 숫자 정규식 확인
+    // 숫자 정규식 확인
 	var regexp = /^[0-9]*$/;
 	if(!regexp.test(x)){
 		$(t).val("");

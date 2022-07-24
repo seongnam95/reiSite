@@ -204,7 +204,7 @@
                                     <p class="hint">㎡</p>
                                 </div>
                             </div>
-                            <div class="field" style="width: 306px;">
+                            <div class="field" style="width: 50%;">
                                 <p class="item_name">용도</p>
                                 <div class="selectbox">
                                     <label for="opt_purposes">용도</label>
@@ -225,19 +225,45 @@
                 <div class="content">
                     <section class="section">
                         <div class="head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
-                            <header><h5>보증금</h5></header>
+                            {% if prop.transaction == '전세' or prop.transaction == '월세' %}
+                                <header><h5>보증금</h5></header>
+                            {% elif prop.transaction == '매매' %}
+                                <header><h5>매매가</h5></header>
+                            {% endif %}
                         </div>
                         <div class="inner">
                             <div class="field">
-                                <p class="item_name">보증금</p>
-                                <input type="text" class="text_edit" id="txt_deposit">
+                                {% if prop.transaction == '전세' or prop.transaction == '월세' %}
+                                    <p class="item_name">보증금</p>
+                                {% elif prop.transaction == '매매' %}
+                                    <p class="item_name">매매가</p>
+                                {% endif %}
+                                <input type="text" class="text_edit" name="price">
                             </div>
                             <div class="field">
-                                <p class="item_name" id="hint_deposit"></p>
+                                <p class="item_name price_kor"></p>
                             </div>
                         </div>
                     </section>
                 </div>
+                {% if prop.transaction == '월세' %}
+                <div class="content">
+                    <section class="section">
+                        <div class="head" style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;">
+                            <header><h5>월세</h5></header>
+                        </div>
+                        <div class="inner">
+                            <div class="field">
+                                <p class="item_name">월세</p>
+                                <input type="text" class="text_edit" name="price">
+                            </div>
+                            <div class="field">
+                                <p class="item_name price_kor"></p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                {% endif %}
             </div>
         </div>
     </body>
